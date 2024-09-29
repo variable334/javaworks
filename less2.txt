@@ -1,0 +1,8 @@
+.git
+.gitignore
+.idea
+less2.txt
+out
+out.txt
+src
+task1.iml
