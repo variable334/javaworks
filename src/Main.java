@@ -6,13 +6,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.io.BufferedReader;
-import java.util.HashMap;
-import java.util.Map;
+
+import static lesson2.test.qw;
 
 class CSV{
     public static String CreateArrays(String[]headers,String[][]data){
@@ -185,6 +183,69 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        int[] a3;
+        if (args.length == 0) {
+
+            a3 = new int[]{4, 2, 7, 5, 1};
+        } else {
+            a3 = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+        }
+        test num = new test();
+        int resultss = num.middlValueDigits(a3);
+        System.out.println(resultss);
+
+        String[] arrs;
+        if (args.length == 0) {
+
+            arrs = new String[]{"cat", "elephant", "dog", "giraffe"};
+        } else {
+            arrs = args[0].split(", ");
+        }
+        test fl = new test();
+        String itresume_res3 = Arrays.toString(fl.filterLength(arrs));
+        System.out.println(itresume_res3);
+        int[] a2;
+        if (args.length == 0) {
+
+                    a2 = new int[]{1, 2, 2, 3, 4, 4, 5};
+        } else {
+            a2 = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+        }
+        test st = new test();
+        String itresume_res2 = Arrays.toString(st.setNum(a2));
+        System.out.println(itresume_res2);
+
+
+        int[] a1;
+
+        if (args.length == 0) {
+            a1 = new int[]{-1, 2, -3, 4, -5, 6};
+
+        } else {
+            a1 = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+        }
+
+        test sd = new test();
+        ArrayList<Integer> result = sd.removeNum(a1);
+        String itresume_res = result.toString();
+        System.out.println(itresume_res);
+
+        int[]a = new int[]{1,9};
+        int[]b= new int[3];
+        System.arraycopy(a,0,b,0,a.length);
+        for(int i : a){
+            System.out.printf("%d ",i);
+        }
+        for (int j: b){
+            System.out.printf("%d ",j);
+        }
+
+        test an = new test();
+        System.out.println(an.qw(2,5));
+
+        test ex = new test();
+        System.out.println(ex.randomarray());
+
         int r = 0;
         String s = "";
         if(args.length==0){
@@ -246,8 +307,8 @@ public class Main {
                 {"Bob","35","Chicago"}
                 };
         }
-        CSV an = new CSV();
-        System.out.println(an.CreateArrays(headers,data));
+        CSV anw = new CSV();
+        System.out.println(anw.CreateArrays(headers,data));
 
         String text = "";
         if(args.length==0){
