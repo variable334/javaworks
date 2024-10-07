@@ -187,6 +187,7 @@ public class Main {
 
 
     }
+
     private static boolean isDigit(String s) throws NumberFormatException {
         try {
             Integer.parseInt(s);
@@ -254,8 +255,6 @@ public class Main {
 
         System.out.println(endTime - startTime);
     }
-
-
 
     public static void main(String[] args) throws IOException {
 
