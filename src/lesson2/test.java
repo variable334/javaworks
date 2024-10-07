@@ -1,6 +1,8 @@
 package lesson2;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 
 public class test {
-
 
     public static String returnstring(String str1, String str2, int n) {
         StringBuilder sb = new StringBuilder();
@@ -182,6 +183,52 @@ public class test {
 
         return roundedUp;
     }
+    public static void delString(LinkedList<String>llstr){
+        LinkedList<String>varllstr=new LinkedList<>();
+            for (String s : llstr){
+                if(s.length()%2!=0){
+                    varllstr.add(s);
+                }
+            }
+            llstr.removeAll(varllstr);
+    }
+    public static int countOfOcurences(LinkedList<String>strings,String val){
+        int count = 0;
+        for (String s:strings){
+            if(s.equals(val)){
+                count++;
+            }
+        }
+        return count;
+
+    }
+    public static Deque<Integer>turn_on(Deque<Integer>dq,int n){
+        if(n>0) {
+            for (int i = 0; i < n % dq.size(); i++) {
+                int a = dq.removeFirst();
+                dq.addLast(a);
+            }
+        }
+        else {
+            n = n + dq.size();
+            for (int i = 0; i < n % dq.size(); i++) {
+                int a = dq.removeFirst();
+                dq.addLast(a);
+            }
+        }
+        return dq;
+    }
+    public static void removeString(Deque<String>removeStr,String str){
+        Deque<String>dq = new LinkedList<>();
+        for (String elem : removeStr){
+            if(elem.equals(str)){
+                dq.add(elem);
+            }
+        }
+        removeStr.removeAll(dq);
+        System.out.println(removeStr);
+    }
+
 }
 
 
