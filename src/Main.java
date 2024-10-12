@@ -1,23 +1,16 @@
 import lesson2.test;
-import lesson2.test.Schoping;
-import lesson3.LLstack;
-import lesson3.myStack;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.text.SimpleDateFormat;
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import static lesson2.test.qw;
 
 class CSV {
     public static String CreateArrays(String[] headers, String[][] data) {
@@ -259,17 +252,27 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-
-        int[]arr;
+        int[] arrays;
         if(args.length==0){
-            arr = new int[]{2,3,32,76,1,7,8,56,24,34,76,100};
+            arrays = new int[]{2,3,32,76,1,7,8,56,24,34,76,100};
         }
-        else {
-            arr = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
+        else{
+            arrays = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
         }
 
-        test.merge.mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
+        test.sort.bubble(arrays);
+        System.out.println(Arrays.toString(arrays));
+
+//        int[]arr;
+//        if(args.length==0){
+//            arr = new int[]{2,3,32,76,1,7,8,56,24,34,76,100};
+//        }
+//        else {
+//            arr = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
+//        }
+//
+//        test.sort.mergeSort(arr);
+//        System.out.println(Arrays.toString(arr));
 
 
 //        String prod1, prod2, prod3;

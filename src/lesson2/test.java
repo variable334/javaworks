@@ -1,25 +1,14 @@
 package lesson2;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Arrays;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.text.SimpleDateFormat;
-import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.Optional;
 
 public class test {
@@ -310,7 +299,7 @@ public class test {
         }
     }
 
-    public class merge {
+    public class sort {
 
         public static void merge(int[] left, int[] right, int[] result) {
 
@@ -338,7 +327,7 @@ public class test {
 
         public static void mergeSort(int[] array) {
             if (array.length < 2) {
-                return; // Массив с одним элементом уже отсортирован
+                return;
             }
             int mid = array.length / 2;
             int[] left = Arrays.copyOfRange(array, 0, mid);
@@ -350,7 +339,23 @@ public class test {
             merge(left, right, array);
 
         }
+
+        public static int[] bubble(int[]arr){
+            int n = arr.length;
+            for (int i = 0; i < n ; i++) {
+                for (int j = 0; j < n-i-1; j++) {
+                    if(arr[j]>arr[j+1]){
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+                
+            }
+            return arr;
+        }
     }
+
 }
 
 
