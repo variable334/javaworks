@@ -338,7 +338,7 @@ public class test {
 
         public static void mergeSort(int[] array) {
             if (array.length < 2) {
-                return; // Массив с одним элементом уже отсортирован
+                return;
             }
             int mid = array.length / 2;
             int[] left = Arrays.copyOfRange(array, 0, mid);
