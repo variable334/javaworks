@@ -1,4 +1,5 @@
 import lesson2.test;
+import lesson2.test.Schoping;
 import lesson3.LLstack;
 import lesson3.myStack;
 
@@ -18,26 +19,25 @@ import java.util.List;
 
 import static lesson2.test.qw;
 
-class CSV{
-    public static String CreateArrays(String[]headers,String[][]data){
-      StringBuilder sb = new StringBuilder();
-      sb.append(String.join(",",headers)).append("\n");
-      for(String[]row:data){
-            sb.append(String.join(",",row)).append("\n");
-          System.out.println(Arrays.toString(row));
-      }
-      return sb.toString().trim();
+class CSV {
+    public static String CreateArrays(String[] headers, String[][] data) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.join(",", headers)).append("\n");
+        for (String[] row : data) {
+            sb.append(String.join(",", row)).append("\n");
+            System.out.println(Arrays.toString(row));
+        }
+        return sb.toString().trim();
     }
 }
-class EmptyString{
-    public static StringBuilder returnStrings(String text){
+
+class EmptyString {
+    public static StringBuilder returnStrings(String text) {
         StringBuilder str = new StringBuilder();
-        String[]pairs=text.split("\n");
-        for (int i = 0; i < pairs.length; i++)
-        {
-            if(!pairs[i].isEmpty())
-            {
-                if(str.length()>0) {
+        String[] pairs = text.split("\n");
+        for (int i = 0; i < pairs.length; i++) {
+            if (!pairs[i].isEmpty()) {
+                if (str.length() > 0) {
                     str.append("\n");
 
                 }
@@ -46,11 +46,12 @@ class EmptyString{
 
 
         }
-    return str;
+        return str;
 
 
     }
 }
+
 class logs {
     private static File log;
 
@@ -71,7 +72,7 @@ class logs {
                 if (arr[i] > max) {
                     max = arr[i];
                 }
-                WriteLogFiles(min,max);
+                WriteLogFiles(min, max);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,6 +97,7 @@ class logs {
 }
 
 public class Main {
+
     private static int LENGTH = 10_000_000;
 
     public static void task4() throws IOException {
@@ -258,124 +260,232 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-
-        Deque<String> dq = new LinkedList<>();
-        String value;
-        if (args.length < 2) {
-
-            dq.add("apple");
-            dq.add("banana");
-            dq.add("apple");
-            dq.add("cherry");
-            value = "apple";
-        } else {
-            for (int i = 0; i < args.length - 1; i++) {
-                dq.add(args[i]);
-            }
-            value = args[args.length - 1];
-        }
-
-        test.removeString(dq, value);
-
-        Deque<Integer> deque = new LinkedList<>();
-        int n;
-        if (args.length < 1) {
-
-            deque.add(1);
-            deque.add(2);
-            deque.add(3);
-            deque.add(4);
-            n = -2;
-//          n = 2;
-        } else {
-            for (int i = 0; i < args.length - 1; i++) {
-                deque.add(Integer.parseInt(args[i]));
-            }
-            n = Integer.parseInt(args[args.length - 1]);
-        }
-        System.out.println(test.turn_on(deque, n));
-
-
-
-
-        LinkedList<String>ocurrent = new LinkedList<>();
-        String val;
+        int[]arr;
         if(args.length==0){
-            ocurrent.add("apple");
-            ocurrent.add("apple");
-            ocurrent.add("banana");
-            ocurrent.add("greap");
-            ocurrent.add("pear");
-            ocurrent.add("pear");
-            val = "pear";
-        }
-        else{
-            for (String s :args){
-                ocurrent.add(s);
-            }
-            val = args[args.length - 1];
-        }
-
-        test oc = new test();
-
-        System.out.println("Occurrences of \"" + val + "\": " + oc.countOfOcurences(ocurrent, val));
-
-//        System.out.println(oc.countOfOcurences(ocurrent,val));
-
-
-
-
-        LLstack lnkstr = new LLstack();
-
-        if(args.length==0){
-        lnkstr.push("apple");
-        lnkstr.push("grape");
-        lnkstr.push("banana");
-        lnkstr.push("pear");
+            arr = new int[]{2,3,32,76,1,7,8,56,24,34,76,100};
         }
         else {
-
-        for (String s : args){
-            lnkstr.push(s);
+            arr = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
         }
-    }
-        System.out.println(lnkstr.getElem());
-        System.out.println(lnkstr.pop());
-        System.out.println(lnkstr.getElem());
-        System.out.println(lnkstr.peek());
+
+        test.merge.mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
 
 
+//        String prod1, prod2, prod3;
+//        Integer count1, count2, count3;
+//
+//        if (args.length == 0){
+//
+//            prod1 = "apple";
+//            prod2 = "grape";
+//            prod3 = "orange";
+//            count1 = 2;
+//            count2 = 5;
+//            count3 = 2;
+//
+//        }
+//        else {
+//                prod1 = args[0];
+//                prod2 = args[1];
+//                prod3 = args[2];
+//                count1 = Integer.parseInt(args[3]);
+//                count2 = Integer.parseInt(args[4]);
+//                count3 = Integer.parseInt(args[5]);
+//            }
+//
+//
+//
+//        test.Schoping back = new test.Schoping();
+//
+//        back.addProduct(prod1,count1);
+//        back.addProduct(prod2,count2);
+//        back.addProduct(prod3,count3);
+//
+//        back.listProd();
+//        System.out.println();
+//        System.out.println("count apple: " + back.checkProduct(prod1));
 
 
-        LinkedList<String> ls = new LinkedList<>();
+//        test.Diction browsHist = new test.Diction();
+//
+//        browsHist.visiting("google.com");
+//        browsHist.visiting("stackoverflow.com");
+//        browsHist.visiting("github.com");
+//        System.out.println(browsHist.back(0));
+//        System.out.println(browsHist.returnHistory());
+//
+//        test.Diction dict = new test.Diction();
+//
+//        dict.addStudents("alice", 90);
+//        dict.addStudents("jeko", 23);
+//        dict.addStudents("john", 100);
+//        dict.addStudents("alice", 88);
+//
+//        System.out.println(dict.getDict());
+//        System.out.println(dict.findStud("alice"));
+//        dict.removElemDict("alice");
+//        System.out.println(dict.getDict());
 
-        if(args.length==0){
-            ls.add("apple");
-            ls.add(("banana"));
-            ls.add("peer");
-            ls.add("grape");
-
-        }
-        else {
-            for (String str : args){
-                ls.add(str);
-
-            }
-
-        }
-        test lls = new test();
-        lls.delString(ls);
-        System.out.println(ls);
-
-
-
-
-
-//        myStack stks  = new myStack();
+//        int[] nums = new int[]{3, 3, 3, 2, 2, 3};
+//        int val = 3;
+//        ArrayList<Integer> list = new ArrayList<>();
+//        for (int i : nums) {
+//            list.add(i);
+//        }
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).equals(val)) {
+//                list.remove(Integer.valueOf(val));
+//                list.add(val);
+//
+//            }
+//        }
+//        System.out.println(list);
+//
+//
+//        String str = "flower,flow,flight";
+//        String res = "";
+//
+//
+//        String[] arrstr = str.split(",");
+//        ArrayList<String> stringList = new ArrayList<>(Arrays.asList(arrstr));
+//
+//
+//        if (stringList.isEmpty()) {
+//            System.out.println(res);
+//            return;
+//        }
+//
+//
+//        String firstStr = stringList.get(0);
+//
+//
+//        for (int i = 0; i < firstStr.length(); i++) {
+//            char currentChar = firstStr.charAt(i);
+//
+//
+//            for (int j = 1; j < stringList.size(); j++) {
+//
+//                if (i >= stringList.get(j).length() || stringList.get(j).charAt(i) != currentChar) {
+//
+//                    System.out.println("Общий префикс: " + res);
+//                    return;
+//                }
+//            }
+//
+//
+//            res += currentChar;
+//        }
+//
+//        System.out.println("Общий префикс: " + res);
+//        String maxstring = "";
+//
+//
+//        Deque<String> dq = new LinkedList<>();
+//        String value;
+//        if (args.length < 2) {
+//
+//            dq.add("apple");
+//            dq.add("banana");
+//            dq.add("apple");
+//            dq.add("cherry");
+//            value = "apple";
+//        } else {
+//            for (int i = 0; i < args.length - 1; i++) {
+//                dq.add(args[i]);
+//            }
+//            value = args[args.length - 1];
+//        }
+//
+//        test.removeString(dq, value);
+//
+//        Deque<Integer> deque = new LinkedList<>();
+//        int n1;
+//        if (args.length < 1) {
+//
+//            deque.add(1);
+//            deque.add(2);
+//            deque.add(3);
+//            deque.add(4);
+//            n1 = -2;
+////          n = 2;
+//        } else {
+//            for (int i = 0; i < args.length - 1; i++) {
+//                deque.add(Integer.parseInt(args[i]));
+//            }
+//            n1 = Integer.parseInt(args[args.length - 1]);
+//        }
+//        System.out.println(test.turn_on(deque, n1));
+//
+//
+//        LinkedList<String> ocurrent = new LinkedList<>();
+//        String val;
+//        if (args.length == 0) {
+//            ocurrent.add("apple");
+//            ocurrent.add("apple");
+//            ocurrent.add("banana");
+//            ocurrent.add("greap");
+//            ocurrent.add("pear");
+//            ocurrent.add("pear");
+//            val = "pear";
+//        } else {
+//            for (String s : args) {
+//                ocurrent.add(s);
+//            }
+//            val = args[args.length - 1];
+//        }
+//
+//        test oc = new test();
+//
+//        System.out.println("Occurrences of \"" + val + "\": " + oc.countOfOcurences(ocurrent, val));
+//
+////        System.out.println(oc.countOfOcurences(ocurrent,val));
+//
+//
+//        LLstack lnkstr = new LLstack();
+//
+//        if (args.length == 0) {
+//            lnkstr.push("apple");
+//            lnkstr.push("grape");
+//            lnkstr.push("banana");
+//            lnkstr.push("pear");
+//        } else {
+//
+//            for (String s : args) {
+//                lnkstr.push(s);
+//            }
+//        }
+//        System.out.println(lnkstr.getElem());
+//        System.out.println(lnkstr.pop());
+//        System.out.println(lnkstr.getElem());
+//        System.out.println(lnkstr.peek());
+//
+//
+//        LinkedList<String> ls = new LinkedList<>();
+//
+//        if (args.length == 0) {
+//            ls.add("apple");
+//            ls.add(("banana"));
+//            ls.add("peer");
+//            ls.add("grape");
+//
+//        } else {
+//            for (String str : args) {
+//                ls.add(str);
+//
+//            }
+//
+//        }
+//        test lls = new test();
+//        lls.delString(ls);
+//        System.out.println(ls);
+//
+//
+//        myStack stks = new myStack();
 //        System.out.println(stks);
-
+//
 //        getTime();
-
+//
 //        var exp = "12 2 3 - *".split(" "); // (1 + 2) * 3
 //
 //        //var exp = "1 2 3 * +".split(" "); // 1 + 2 * 3
@@ -402,7 +512,7 @@ public class Main {
 //                        stk.push(res);
 //                        break;
 //                    case "/":
-//                        res =  stk.pop()/ stk.pop();
+//                        res = stk.pop() / stk.pop();
 //                        stk.push(res);
 //                        break;
 //                    default:
@@ -425,7 +535,6 @@ public class Main {
 //        System.out.println(resultss);
 //
 //
-//
 //        String[] arrs;
 //        if (args.length == 0) {
 //
@@ -438,11 +547,10 @@ public class Main {
 //        System.out.println(itresume_res3);
 //
 //
-//
 //        int[] a2;
 //        if (args.length == 0) {
 //
-//                    a2 = new int[]{1, 2, 2, 3, 4, 4, 5};
+//            a2 = new int[]{1, 2, 2, 3, 4, 4, 5};
 //        } else {
 //            a2 = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
 //        }
@@ -466,19 +574,18 @@ public class Main {
 //        System.out.println(itresume_res);
 //
 //
-//
-//        int[]a = new int[]{1,9};
-//        int[]b= new int[3];
-//        System.arraycopy(a,0,b,0,a.length);
-//        for(int i : a){
-//            System.out.printf("%d ",i);
+//        int[] a = new int[]{1, 9};
+//        int[] b = new int[3];
+//        System.arraycopy(a, 0, b, 0, a.length);
+//        for (int i : a) {
+//            System.out.printf("%d ", i);
 //        }
-//        for (int j: b){
-//            System.out.printf("%d ",j);
+//        for (int j : b) {
+//            System.out.printf("%d ", j);
 //        }
 //
-//          test an = new test();
-//        System.out.println(an.qw(2,5));
+//        test an = new test();
+//        System.out.println(an.qw(2, 5));
 //
 //
 //        test ex = new test();
@@ -486,52 +593,45 @@ public class Main {
 //
 //        int r = 0;
 //        String s = "";
-//        if(args.length==0){
+//        if (args.length == 0) {
 //            s = "text";
 //            r = 100;
 //        }
 //        test rt = new test();
-//        System.out.println(rt.repString(s,r));
-//        String s1 = rt.repString(s,r);
+//        System.out.println(rt.repString(s, r));
+//        String s1 = rt.repString(s, r);
 //
 //
-//
-//        String strpoly="";
-//        if(args.length==0){
+//        String strpoly = "";
+//        if (args.length == 0) {
 //            strpoly = "abbaa";
 //        }
 //        test t = new test();
 //        System.out.println(t.polyndrom(strpoly));
 //        String repStr = "";
-//        if(args.length==0){
+//        if (args.length == 0) {
 //            repStr = "aaaabbbcccdddd";
-//        }
-//        else {
+//        } else {
 //            repStr = args[0];
 //        }
 //        test ac = new test();
 //        System.out.println(ac.countchars(repStr));
 //
 //
-//
-//
-//        String str1= "";
-//        String str2= "";
-//        int n =0;
-//        if (args.length==0) {
+//        String str1 = "";
+//        String str2 = "";
+//        int n = 0;
+//        if (args.length == 0) {
 //            str1 = "&^%";
 //            str2 = "@#$";
 //            n = 2;
-//        }
-//        else {
-//            str1 =args[0];
-//            str2=args[1];
+//        } else {
+//            str1 = args[0];
+//            str2 = args[1];
 //            n = 0;
 //        }
 //        test as = new test();
 //        System.out.println(as.returnstring(str1, str2, n));
-//
-//
 //
 //
 //        String baseURL = "";
@@ -543,39 +643,37 @@ public class Main {
 //            baseURL = args[0];
 //            params = args[1];
 //        }
-//        String []headers = {};
-//        String [][] data = {};
-//        if(args.length==0){
-//            headers=new String[]{"Name","Age","City"};
-//            data =new String[][]{
-//                {"John","30","NewYork"},
-//                {"Alice","25","LosAngeles"},
-//                {"Bob","35","Chicago"}
-//                };
+//        String[] headers = {};
+//        String[][] data = {};
+//        if (args.length == 0) {
+//            headers = new String[]{"Name", "Age", "City"};
+//            data = new String[][]{
+//                    {"John", "30", "NewYork"},
+//                    {"Alice", "25", "LosAngeles"},
+//                    {"Bob", "35", "Chicago"}
+//            };
 //        }
 //        CSV anw = new CSV();
-//        System.out.println(anw.CreateArrays(headers,data));
+//        System.out.println(anw.CreateArrays(headers, data));
 //
 //        String text = "";
-//        if(args.length==0){
+//        if (args.length == 0) {
 //            text = "line1\n\nline2\n\nline3";
-//        }
-//        else{
+//        } else {
 //            text = args[0];
 //        }
 //        int[] arr = {};
-//        if(args.length==0) {
-//            arr= new int[]{2,12,54,7,9,0};
-//        }
-//        else {
-//                arr = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+//        if (args.length == 0) {
+//            arr = new int[]{2, 12, 54, 7, 9, 0};
+//        } else {
+//            arr = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
 //        }
 //        logs lg = new logs();
 //        lg.MinMax(arr);
-//        try(BufferedReader br = new BufferedReader(new FileReader("log.txt"))) {
+//        try (BufferedReader br = new BufferedReader(new FileReader("log.txt"))) {
 //
 //            String ln;
-//            while ((ln = br.readLine())!= null){
+//            while ((ln = br.readLine()) != null) {
 //                System.out.println(ln);
 //            }
 //        } catch (IOException e) {
@@ -588,8 +686,8 @@ public class Main {
 //        test wr = new test();
 //
 //
-//        wr.writeString("text.txt",s1);
-
+//        wr.writeString("text.txt", s1);
+//
 //        Writter(".", "less2.txt");
 //        task1();
 //        cycly();

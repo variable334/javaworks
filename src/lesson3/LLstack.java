@@ -1,10 +1,7 @@
 package lesson3;
 import java.util.LinkedList;
 
-//push(String element)
-//pop()
-//peek()
-//getElements()
+
 
 public class LLstack {
 
